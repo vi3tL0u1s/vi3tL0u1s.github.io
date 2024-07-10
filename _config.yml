@@ -1,10 +1,10 @@
-title: Stack Problems
-description: My Personal Stack Problems
-author: Agus Makmun
-github: https://github.com/agusmakmun
-about: I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django.
-disqus_shortname: stackproblems
-google_analytics: UA-XXXXXXXX-Y
+title: Cyber Blogs
+description: My Personal Cyber Blogs
+author: L0u15
+github: https://github.com/vi3tL0u1s
+about: I'm in love with cyber security.
+disqus_shortname: cyberblogs
+# google_analytics: UA-XXXXXXXX-Y
 
 enableTags: true
 tagarray: []
@@ -24,7 +24,7 @@ social:
     - icon: fa-stack-exchange
       link: "#"
     - icon: fa-github
-      link: "https://github.com/agusmakmun"
+      link: "#"
 
 share:
   twitter_username: github.io
@@ -35,10 +35,10 @@ urls:
       url: /about/
     - text: My Projects
       url: /projects/
-    - text: XML Feed
-      url: /feed.xml
+    # - text: XML Feed
+    #   url: /feed.xml
 
-url: "https://agusmakmun.github.io"
+url: "https://vi3tL0u1s.github.io"
 baseurl: ""
 paginate: 20
 per_page: 20

@@ -90,7 +90,7 @@ FuzzJIT was created by Junjie Wang (the author of Skyfire and Superion) in 2023.
 25   }
 ```
 
-As shown in the code above, the opt function is the mutation point, where the FuzzJIT will mutate the code. Additionally, at line 16, a for-loop with 0x200 iterations is used to trigger the JIT optimization. After that, the deepEquals function is used to compare the type of opt function objects at the pre- and post-optimization. If the JIT compiler is triggered and the deepEqual function returns False, the FuzzJIT will call the Fuzzilli's function to report an immidiate crash (crash 0).
+As shown in the code above, the opt function is the mutation point, where the FuzzJIT will mutate the code. Additionally, at line 17, a for-loop with 0x200 iterations is used to trigger the JIT optimization. After that, the deepEquals function is used to compare the type of opt function objects at the pre- and post-optimization. If the JIT compiler is triggered and the deepEquals function returns False, the FuzzJIT will call the Fuzzilli's function to report an immidiate crash (crash 0).
 
 Yes, this is how simple it is, but let have a closer look on the deepEquals function (in file fuzzjit\Sources\FuzzilliCli\Profiles\V8Profile.swift) as shown below:
 
@@ -152,10 +152,10 @@ Function Descriptions:
 
 1. classOf(object) (Lines 1-3)
 - Lines 2-3: Uses Object.prototype.toString.call to determine the class of an object, then returns a substring representing the object's class.
-2. deepObjectEquals(a, b) (Lines 5-17)
-- Lines 6-11: Compares the sorted properties of two objects.
-- Lines 12-16: Recursively checks for deep equality of corresponding properties in both objects.
-3. deepEquals(a, b) (Lines 19-50)
+2. deepObjectEquals(a, b) (Lines 6-20)
+- Lines 7-13: Compares the sorted properties of two objects.
+- Lines 14-18: Recursively checks for deep equality of corresponding properties in both objects.
+3. deepEquals(a, b) (Lines 22-51)
 - Lines 23-25: Checks for strict equality, including handling 0 and -0.
 - Line 27: Compares types.
 - Lines 28: Handles NaN and number comparisons.

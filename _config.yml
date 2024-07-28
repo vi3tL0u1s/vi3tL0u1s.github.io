@@ -44,18 +44,16 @@ paginate: 20
 per_page: 20
 paginate_path: "/page/:num/"
 markdown: kramdown
-highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
+# highlighter: rouge
+# kramdown:
+#   input: GFM
+#   syntax_highlighter_opts:
+#     block:
+#       line_numbers: true
 
 plugins:
   - jekyll-paginate
   - jekyll-gist
-  - jekyll-feed
-  - jekyll-seo-tag
 
 compress_html:
   clippings: all

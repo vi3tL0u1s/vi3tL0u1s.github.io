@@ -127,44 +127,30 @@ blockquote {
 /**
  * Code formatting
  */
- pre,
- code {
-     font-size: 15px;
-     border: 1px solid #ddd;
-     border-radius: 3px;
-     background-color: #eef;
-     margin: 0;
-     line-height: 1.5;
- }
- 
- code {
-     padding: 1px 5px;
- }
- 
  pre {
-     padding: 0;
-     overflow-x: auto;
-     line-height: 1.5;
-     counter-reset: line-number;
- }
- 
- pre code {
-     display: block;
-     position: relative;
-     padding-left: 3em; /* Adjust padding for line numbers */
- }
- 
- pre code::before {
-     counter-increment: line-number;
-     content: counter(line-number);
-     display: inline-block;
-     width: 2em;
-     padding-right: 1em;
-     text-align: right;
-     position: absolute;
-     left: 0;
-     color: #888;
- }
+    padding: 0;
+    overflow-x: auto;
+    line-height: 1.5;
+    counter-reset: line-number;
+}
+
+pre code {
+    display: block;
+    position: relative;
+    padding-left: 3em; /* Adjust padding for line numbers */
+}
+
+pre code::before {
+    counter-increment: line-number;
+    content: counter(line-number);
+    display: inline-block;
+    width: 2em;
+    padding-right: 1em;
+    text-align: right;
+    position: absolute;
+    left: 0;
+    color: #888;
+}
 
 
 

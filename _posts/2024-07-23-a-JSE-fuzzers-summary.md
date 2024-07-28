@@ -58,8 +58,7 @@ So, by now, you probably realize that Fuzzilli is a mutation-based fuzzer. It is
 
 FuzzJIT was created by Junjie Wang (the author of Skyfire and Superion) in 2023. In short, FuzzJIT inherits many ideas and implementations from Fuzzilli, but it is designed to focus on triggering logic errors in the JIT compiler. More specifically, Junjie made a template to generate JavaScript code, ensuring that the JIT compiler is triggered. The idea is quite simple, but very effective, as she has found ~17 CVEs in five different JSEs. Below is an example of the template (in the file fuzzjit\Sources\FuzzilliCli\Profiles\JSCProfile.swift) that is used by FuzzJIT:
 
-
-```js
+{% highlight javascript linenos %}
 function opt(opt_param){
     // MUTATION POINT
 }
@@ -84,15 +83,14 @@ if (jit_a0 === undefined && jit_a4 === undefined) {
         fuzzilli('FUZZILLI_CRASH', 0);
     }
 }
-```
-
+{% endhighlight %}
 
 As shown in the code above, the opt function is the mutation point, where the FuzzJIT will mutate the code. Additionally, at line 16, a for-loop with 0x200 iterations is used to trigger the JIT optimization. After that, the deepEquals function is used to compare the type of opt function objects at the pre- and post-optimization. If the JIT compiler is triggered, the FuzzJIT will call the Fuzzilli's function to report an immidiate crash (crash 0).
 
 Yes, this is how simple it is, but let have a closer look on the deepEquals function (in file fuzzjit\Sources\FuzzilliCli\Profiles\V8Profile.swift) as shown below:
 
+{% highlight javascript linenos %}
 
-```js
 function classOf(object) {
     var string = Object.prototype.toString.call(object);
     return string.substring(8, string.length - 1);
@@ -144,7 +142,7 @@ function deepEquals(a, b) {
     }
     return deepObjectEquals(a, b);
 }
-```
+{% endhighlight %}
 
 Function Descriptions:
 
@@ -167,8 +165,7 @@ There is another point worth mentioning, which is what the author calls the PoC-
 
 The list of js types and values is shown below:
 
-<!-- {% highlight javascript linenos %} -->
-```js
+{% highlight javascript linenos %}
 // Possible return values of the 'typeof' operator.
 public static let jsTypeNames = ["undefined", "boolean", "number", "string", "symbol", "function", "object", "bigint"]
 
@@ -215,8 +212,7 @@ public var objectType = JSType.jsPlainObject
 public func functionType(forSignature signature: Signature) -> JSType {
     return .jsFunction(signature)
 }
-```
-<!-- {% endhighlight %} -->
+{% endhighlight %}
 
 ### Superion (2019)
 

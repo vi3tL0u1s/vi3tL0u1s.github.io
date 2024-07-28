@@ -90,7 +90,7 @@ FuzzJIT was created by Junjie Wang (the author of Skyfire and Superion) in 2023.
 25   }
 ```
 
-As shown in the code above, the opt function is the mutation point, where the FuzzJIT will mutate the code. Additionally, at line 16, a for-loop with 0x200 iterations is used to trigger the JIT optimization. After that, the deepEquals function is used to compare the type of opt function objects at the pre- and post-optimization. If the JIT compiler is triggered, the FuzzJIT will call the Fuzzilli's function to report an immidiate crash (crash 0).
+As shown in the code above, the opt function is the mutation point, where the FuzzJIT will mutate the code. Additionally, at line 16, a for-loop with 0x200 iterations is used to trigger the JIT optimization. After that, the deepEquals function is used to compare the type of opt function objects at the pre- and post-optimization. If the JIT compiler is triggered and the deepEqual function returns False, the FuzzJIT will call the Fuzzilli's function to report an immidiate crash (crash 0).
 
 Yes, this is how simple it is, but let have a closer look on the deepEquals function (in file fuzzjit\Sources\FuzzilliCli\Profiles\V8Profile.swift) as shown below:
 

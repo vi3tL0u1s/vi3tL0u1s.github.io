@@ -48,6 +48,8 @@ highlighter: rouge
 plugins:
   - jekyll-paginate
   - jekyll-gist
+  - jekyll-feed
+  - jekyll-seo-tag
 
 compress_html:
   clippings: all

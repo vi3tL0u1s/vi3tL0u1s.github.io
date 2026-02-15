@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Viet Hoang Luu — PhD Candidate @ MelbUni</title>
+  <meta name="description" content="Viet Hoang Luu, PhD candidate at the University of Melbourne. Software vulnerability detection, fuzzing, cybersecurity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f8f9fa;
+      --surface: #e9ecef;
+      --text: #212529;
+      --muted: #495057;
+      --accent: #0d6efd;
+      --accent-hover: #0b5ed7;
+      --border: #dee2e6;
+      --nav-h: 3.5rem;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: var(--nav-h);
+      padding: 0 2rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .topbar-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .topbar-name:hover { color: var(--accent); }
+    .topbar-name:active { opacity: 0.8; }
+    .topbar-nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .topbar-nav a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.35rem 0.5rem;
+      margin: -0.35rem -0.5rem;
+      border-radius: 4px;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .topbar-nav a:hover { color: var(--accent); }
+    .topbar-nav a:active {
+      color: var(--accent);
+      background: var(--bg-subtle);
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 4rem;
+    }
+    @media (max-width: 768px) {
+      .main { grid-template-columns: 1fr; padding: 1.5rem 1.25rem 3rem; }
+      .topbar { padding: 0 1.25rem; }
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: calc(var(--nav-h) + 2.5rem + 1px);
+      align-self: start;
+    }
+    .profile-photo {
+      position: relative;
+      width: 200px;
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      background: var(--bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .profile-photo .photo-placeholder {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .profile-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      border-radius: inherit;
+    }
+    .sidebar .role {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .contact-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 160px;
+    }
+    .contact-btns a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.85rem;
+      font-size: 0.85rem;
+      color: var(--text);
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+    .contact-btns a:hover {
+      background: var(--bg-subtle);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .contact-btns a:active {
+      transform: scale(0.98);
+      background: var(--border);
+    }
+    .contact-btns a i { font-size: 1rem; }
+
+    .content { min-width: 0; }
+    .content .profile {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .content .profile a { color: var(--accent); text-decoration: none; }
+    .content .profile a:hover { text-decoration: underline; }
+
+    .open-collab {
+      color: #c0392b;
+      font-weight: 600;
+    }
+    .open-collab i {
+      margin-right: 0.25rem;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 2rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer a { color: var(--muted); text-decoration: none; }
+    .footer a:hover { color: var(--accent); text-decoration: underline; }
+
+    section {
+      margin-bottom: 2rem;
+    }
+    section:last-of-type { margin-bottom: 0; }
+    section h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .item {
+      margin-bottom: 1rem;
+    }
+    .item:last-child { margin-bottom: 0; }
+    .item-title { font-weight: 600; color: var(--text); margin-bottom: 0.2rem; }
+    .item-title a { color: inherit; text-decoration: none; }
+    .item-title a:hover { color: var(--accent); text-decoration: underline; }
+    .item-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+    .item-meta a { color: var(--accent); text-decoration: none; }
+    .item-meta a:hover { text-decoration: underline; }
+    .item-desc { color: var(--muted); font-size: 0.9rem; }
+    ul.compact { list-style: none; }
+    ul.compact li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    ul.compact li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    ul.compact li strong { color: var(--text); }
+
+    .news-list { list-style: none; }
+    .news-item {
+      margin-bottom: 1rem;
+      padding-left: 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .news-item:last-child { margin-bottom: 0; }
+    .news-item-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      min-width: 10.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #c45c26;
+    }
+    .news-item-header i {
+      font-size: 1rem;
+      color: #c45c26;
+    }
+    .news-text { min-width: 0; }
+    .news-date {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .news-text { font-size: 0.95rem; color: var(--text); line-height: 1.5; }
+    .news-text a { color: var(--accent); text-decoration: none; }
+    .news-text a:hover { text-decoration: underline; }
+
+    .stars {
+      display: inline; font-size: inherit; font-weight: 600;
+      color: #555; vertical-align: baseline; white-space: nowrap;
+    }
+    .stars i { color: #f5c518; }
+
+    .pub-list { list-style: none; }
+    .pub-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .pub-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+    .pub-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      background: var(--accent);
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+    .pub-title { font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
+    .pub-authors { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-venue { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .pub-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text);
+      text-decoration: none;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .pub-links a:hover { background: var(--border); border-color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <a class="topbar-name" href="#">Viet Hoang Luu</a>
+    <div class="topbar-nav">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#opensource">Open Source</a>
+      <a href="#awards">Awards</a>
+    </div>
+  </nav>
+
+  <main class="main">
+    <aside class="sidebar">
+      <div class="profile-photo">
+        <img src="images/image.png" alt="Viet Hoang Luu" onerror="this.style.display='none'">
+        <span class="photo-placeholder" aria-hidden="true">Photo</span>
+      </div>
+      <div class="role">
+        <div>PhD Candidate</div>
+        <div>The University of Melbourne</div>
+      </div>
+      <div class="contact-btns" aria-label="Contact">
+        <a href="https://www.linkedin.com/in/viet-hoang-luu-05a88624b" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/vi3tL0u1s" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://scholar.google.com/" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+        <a href="mailto:viethoang.luu@student.unimelb.edu.au"><i class="fas fa-envelope"></i> E-mail</a>
+      </div>
+    </aside>
+
+    <div class="content" id="about">
+      <h2>Viet Hoang Luu</h2>
+      <p class="profile">
+        <!-- Hi, I am Viet Hoang Luu.<br> -->
+        I am a PhD candidate at the <a href="https://www.unimelb.edu.au/">University of Melbourne</a>, advised by <a href="https://scholar.google.com/citations?user=k7DRrs4AAAAJ&hl=en" target="_blank" rel="noopener">Dr Amirmohammad Pasdar</a>, <a href="https://people.eng.unimelb.edu.au/tobym/" target="_blank" rel="noopener">Professor Toby Murray</a>, <a href="https://cohney.info/" target="_blank" rel="noopener">Dr Shaanan Cohney</a>, and <a href="https://thuanpv.github.io/" target="_blank" rel="noopener">Dr Van-Thuan Pham</a>. My research focuses on <strong>fuzz testing</strong> and software vulnerability detection.<br><br>
+        Prior to my PhD, I earned a Master's degree in Cybersecurity from Monash University (2024), graduating as the top student (<a href="https://www.linkedin.com/feed/update/urn:li:activity:7328944037590130690/" target="_blank" rel="noopener"><strong>Dux of Postgraduate</strong></a>). I also hold a Bachelor's degree in Electrical Engineering from UNSW (2019) and am a GIAC Certified Incident Handler.
+        <br><br>
+        <span class="open-collab"><i class="fas fa-handshake" aria-hidden="true"></i> I am open to collaboration in:</span>
+        <br>
+        <span class="open-collab"><i class="fas fa-bug" aria-hidden="true"></i> <strong>Fuzz Testing</strong>, <strong>Static Analysis</strong> &amp; <strong>Vulnerability Detection</strong></span>
+        <br>
+        <span class="open-collab" style="opacity: 0.75;"><i class="fas fa-microchip" aria-hidden="true"></i> Binary Exploitation &amp; Reverse Engineering</span>
+      </p>
+
+      <section id="news">
+        <h2>News</h2>
+        <ul class="news-list">
+          <li class="news-item">
+            <span class="news-item-header"><i class="fas fa-bullhorn" aria-hidden="true"></i> News [Feb, 2026]:</span>
+            <span class="news-text">My first PhD project is complete and now available on arXiv — <a href="https://arxiv.org/pdf/2602.10487" target="_blank" rel="noopener">Following Dragons: Code Review-Guided Fuzzing</a>. My tool, <strong>EyeQ</strong>, discovered 46 previously unknown memory bugs in PHP, a security-critical platform powering the majority of server-side web applications.</span>
+          </li>
+          
+          <li class="news-item">
+            <span class="news-item-header"><i class="fas fa-bullhorn" aria-hidden="true"></i> News [Sep, 2024]:</span>
+            <span class="news-text">I am glad to say that my first three pull requests were merged into <strong>AFLplusplus</strong> <span class="stars">(<i class="fas fa-star" aria-hidden="true"></i> 6.3k)</span>: <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2540" target="_blank" rel="noopener">#2540</a>, <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2542" target="_blank" rel="noopener">#2542</a>, <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2546" target="_blank" rel="noopener">#2546</a></span>
+          </li>
+          <li class="news-item">
+            <span class="news-item-header"><i class="fas fa-bullhorn" aria-hidden="true"></i> News [Jun, 2025]:</span>
+            <span class="news-text">Honoured and grateful to receive the 2025 Cliff Bellamy Award – Dux of Postgraduate from the Monash Faculty of Information Technology!</span>
+          </li>
+          <li class="news-item">
+            <span class="news-item-header"><i class="fas fa-bullhorn" aria-hidden="true"></i> News [Dec, 2024]:</span>
+            <span class="news-text">I have my first commit merged into <a href="https://github.com/googleprojectzero/fuzzilli/commit/d4796ed" target="_blank" rel="noopener">googleprojectzero/Fuzzilli</a> <span class="stars">(<i class="fas fa-star" aria-hidden="true"></i> 2.1k)</span> in collaboration with <strong>Jingyi Chen</strong> and merged by <strong>Samuel Groß</strong>.</span>
+          </li>
+          <li class="news-item">
+            <span class="news-item-header"><i class="fas fa-bullhorn" aria-hidden="true"></i> News [Nov, 2024]:</span>
+            <span class="news-text">I am glad to say that my PhD journey has officially started at CIS, FEIT, University of Melbourne. My research will focus on fuzz testing and software vulnerability detection.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Publications</h2>
+        <ul class="pub-list">
+          <li class="pub-item">
+            <span class="pub-badge">arXiv</span>
+            <div class="pub-title">Following Dragons: Code Review-Guided Fuzzing</div>
+            <div class="pub-authors">Viet Hoang Luu, Amirmohammad Pasdar, Wachiraphan Charoenwet, Toby Murray, Shaanan Cohney, Van-Thuan Pham</div>
+            <div class="pub-venue">arXiv, 2025</div>
+            <div class="pub-links">
+              <a href="https://arxiv.org/pdf/2602.10487" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> PDF</a>
+              <a href="#" target="_blank" rel="noopener"><i class="fas fa-book"></i> BIB</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <div class="item">
+          <div class="item-title">PhD in Vulnerability Detection and Software Testing</div>
+          <div class="item-meta">University of Melbourne · 11/2024 – present</div>
+        </div>
+        <div class="item">
+          <div class="item-title">Master of Cybersecurity</div>
+          <div class="item-meta">Monash University · 07/2022 – 06/2024 · Dux of Postgraduate</div>
+        </div>
+        <div class="item">
+          <div class="item-title">BEng (Honours) in Electrical Engineering</div>
+          <div class="item-meta">UNSW · 01/2016 – 12/2019</div>
+        </div>
+      </section>
+
+      <section id="opensource">
+        <h2>Open Source Contributions</h2>
+        <div class="item">
+          <div class="item-title"><a href="https://github.com/AFLplusplus/AFLplusplus" target="_blank" rel="noopener">AFLplusplus</a> <span class="stars">(<i class="fas fa-star" aria-hidden="true"></i> 6.3k)</span></div>
+          <div class="item-meta">Fuzzing framework · <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2540" target="_blank" rel="noopener">#2540</a>, <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2542" target="_blank" rel="noopener">#2542</a>, <a href="https://github.com/AFLplusplus/AFLplusplus/pull/2546" target="_blank" rel="noopener">#2546</a></div>
+          <div class="item-desc">One of the most widely used academic and industry fuzzing frameworks.</div>
+        </div>
+        <div class="item">
+          <div class="item-title"><a href="https://github.com/googleprojectzero/fuzzilli" target="_blank" rel="noopener">googleprojectzero/Fuzzilli</a> <span class="stars">(<i class="fas fa-star" aria-hidden="true"></i> 2.1k)</span></div>
+          <div class="item-meta">Google Project Zero · <a href="https://github.com/googleprojectzero/fuzzilli/commit/d4796ed" target="_blank" rel="noopener">Commit d4796ed</a></div>
+          <div class="item-desc">JavaScript engine fuzzer widely used in academic research.</div>
+        </div>
+      </section>
+
+      <section id="awards">
+        <h2>Selected Awards</h2>
+        <ul class="compact">
+          <li>Melbourne Research Scholarship (PhD @ Melbourne University)</li>
+          <li>Dux of Postgraduate, IT Faculty, Monash University (2025)</li>
+          <li>Defence Cooperation Scholarship, Australian Government (Master @ Monash University)</li>
+          <li>GIAC Certified Incident Handler (US$8000)</li>
+          <li>Summer & Winter Research Scholarships, Monash University (AUD$8400)</li>
+          <li>Defence Cooperation Scholarship, Australian Government (Honours @ UNSW)</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <a href="#">Viet Hoang Luu</a> © 2026
+  </footer>
+</body>
+</html>

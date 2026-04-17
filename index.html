@@ -35,14 +35,19 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
       height: var(--nav-h);
-      padding: 0 2rem;
       border-bottom: 1px solid var(--border);
       background: var(--bg);
       box-shadow: 0 1px 0 var(--border);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
     }
     .topbar-name {
       font-size: 1.25rem;
@@ -79,11 +84,6 @@
       margin: 0 auto;
       padding: 2.5rem 2rem 4rem;
     }
-    @media (max-width: 768px) {
-      .main { grid-template-columns: 1fr; padding: 1.5rem 1.25rem 3rem; }
-      .topbar { padding: 0 1.25rem; }
-    }
-
     .sidebar {
       display: flex;
       flex-direction: column;
@@ -311,18 +311,84 @@
       transition: background 0.15s ease, border-color 0.15s ease;
     }
     .pub-links a:hover { background: var(--border); border-color: var(--muted); }
+
+    @media (max-width: 768px) {
+      .main { grid-template-columns: 1fr; padding: 1.5rem 1.25rem 3rem; }
+      .topbar { height: auto; }
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.6rem 1.25rem;
+      }
+      .topbar-name { font-size: 1.1rem; }
+      .topbar-nav {
+        gap: 0.9rem;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .topbar-nav::-webkit-scrollbar { display: none; }
+      .topbar-nav a {
+        font-size: 0.9rem;
+        white-space: nowrap;
+        padding: 0.2rem 0.25rem;
+        margin: -0.2rem -0.25rem;
+      }
+      .sidebar {
+        position: static;
+        margin-bottom: 1.5rem;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .profile-photo {
+        width: 96px;
+        margin-bottom: 0;
+      }
+      .sidebar .role {
+        margin-bottom: 0;
+        font-size: 0.95rem;
+        text-align: left;
+        flex: 1;
+        min-width: 0;
+      }
+      .contact-btns {
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: none;
+        width: 100%;
+        gap: 0.4rem;
+      }
+      .contact-btns a {
+        flex: 1 1 auto;
+        justify-content: center;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      .news-item {
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .news-item-header { min-width: 0; }
+    }
   </style>
 </head>
 <body>
   <nav class="topbar">
-    <a class="topbar-name" href="#">Viet Hoang Luu</a>
-    <div class="topbar-nav">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#education">Education</a>
-      <a href="#opensource">Open Source</a>
-      <a href="#awards">Awards</a>
+    <div class="topbar-inner">
+      <a class="topbar-name" href="#">Viet Hoang Luu</a>
+      <div class="topbar-nav">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#opensource">Open Source</a>
+        <a href="#awards">Awards</a>
+      </div>
     </div>
   </nav>
 
